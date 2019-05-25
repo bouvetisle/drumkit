@@ -1,10 +1,17 @@
 for (btn=0;btn<document.querySelectorAll(".drum").length;btn++){
 
-document.querySelectorAll(".drum")[btn].addEventListener("click",function(){
-  this.style.color = "white";
-  console.log(this.innerHTML);
-  var buttonInnerHTML = this.innerHTML;
-switch (buttonInnerHTML) {
+document.querySelectorAll(".drum")[btn].addEventListener("click",function()
+{
+  makeSound(buttonInnerHTML);
+});
+}
+
+document.addEventListener("keypress",function(e){
+  makeSound(e);
+})
+
+function makeSound(key){
+switch (key) {
   case "w":
     var crash = new Audio("sounds/crash.mp3");
     crash.play();
@@ -33,8 +40,6 @@ switch (buttonInnerHTML) {
     var tom4 = new Audio("sounds/tom-4.mp3");
     tom4.play();
   break;
-  default: console.log(buttonInnerHTML);
+  default: console.log(myKey);
 }
-
-});
 }
